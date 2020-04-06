@@ -16,7 +16,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     public Docket api() {
         //TODO change host retrieval method
         return new Docket(DocumentationType.SWAGGER_2)
-                .host("http://mathpar.ukma.edu.ua/learning/account")
+                .host("mathpar.ukma.edu.ua/learning/account")
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.ant("/api/**"))
