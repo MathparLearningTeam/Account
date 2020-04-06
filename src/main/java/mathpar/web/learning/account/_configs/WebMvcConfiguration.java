@@ -14,7 +14,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class WebMvcConfiguration implements WebMvcConfigurer {
     @Bean
     public Docket api() {
+        //TODO change host retrieval method
         return new Docket(DocumentationType.SWAGGER_2)
+                .host("http://mathpar.ukma.edu.ua/learning/account")
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.ant("/api/**"))

@@ -1,4 +1,4 @@
-#Account module
+# Account module
 ### TL;DR
     Account module is responsible for maintaining user accounts and authentication. It also serves as CAS for all the applications in the system.
 ### Common instructions
@@ -15,7 +15,7 @@
     
 Detailed description
 -
-###General structure
+### General structure
 
 There are 6 packages in sources:
 - `_configs` is a package responsible for any kind of configuration and starter classes
@@ -27,10 +27,10 @@ There are 6 packages in sources:
 
 Account module has 2 main global purposes: maintaining user accounts and providing authentication (CAM) services for other modules and clients.
 
-###Database
+### Database
 Database tables are created and managed using scripts in the `ddl` resource folder. Entity classes are only validating the tables to be up to date with codebase.
 
-###Controllers
+### Controllers
 All the controllers were designed as REST controllers. There are no templates or other static resources served by the account module.
 
 Public endpoints are the endpoints marked with `@PublicApi` on the class level. They are exposed to clients and need to be treated with caution.
