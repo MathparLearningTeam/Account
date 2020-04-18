@@ -24,14 +24,14 @@ class AuthenticationServiceTest {
     private final long userId = 1;
 
     private final AuthenticationToken generatedAuthenticationToken = new AuthenticationToken(userId, issuer);
-    private final Account accountForAuthentication = new Account(userId, EncryptionUtils.createHash(email), EncryptionUtils.createHash(password), null, null, null);
+    private final Account accountForAuthentication = new Account(userId, email, EncryptionUtils.createHash(password), null, null, null);
 
     private final AuthenticationService authenticationService = new AuthenticationService(accountRepository, tokenService);
 
     @BeforeEach
     void setUp() {
         Mockito.when(tokenService.createToken(0, userId, issuer)).thenReturn(generatedAuthenticationToken);
-        Mockito.when(accountRepository.findByEmailAndPassword(EncryptionUtils.createHash(email), EncryptionUtils.createHash(password))).thenReturn(Optional.of(accountForAuthentication));
+        Mockito.when(accountRepository.findByEmailAndPassword(email, EncryptionUtils.createHash(password))).thenReturn(Optional.of(accountForAuthentication));
     }
 
     @Test

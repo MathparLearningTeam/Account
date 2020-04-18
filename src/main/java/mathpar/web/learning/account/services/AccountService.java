@@ -2,7 +2,6 @@ package mathpar.web.learning.account.services;
 
 import mathpar.web.learning.account.entities.Account;
 import mathpar.web.learning.account.repositories.AccountRepository;
-import mathpar.web.learning.account.utils.EncryptionUtils;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -20,12 +19,15 @@ public class AccountService {
     }
 
     public Optional<Account> getAccount(String email){
-        return accountRepository.findByEmail(EncryptionUtils.createHash(email));
+        return accountRepository.findByEmail(email);
     }
 
-    public boolean isEmailAvailable(String rawEmail){
-        var principal = EncryptionUtils.createHash(rawEmail);
-        return accountRepository.isEmailAvailable(principal).isEmpty();
+    public Optional<Account> getAccount(long id){
+        return accountRepository.findById(id);
+    }
+
+    public boolean isEmailAvailable(String email){
+        return accountRepository.isEmailAvailable(email).isEmpty();
     }
 
     public Account createAccount(String email, String password, String fullName){

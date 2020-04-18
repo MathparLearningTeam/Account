@@ -34,7 +34,7 @@ class RestorationServiceTest {
 
     @BeforeEach
     void setUp() {
-        Mockito.when(accountRepository.findByEmail(EncryptionUtils.createHash(email))).thenReturn(Optional.of(new Account(userId, email, null, null, null, null)));
+        Mockito.when(accountRepository.findByEmail(email)).thenReturn(Optional.of(new Account(userId, email, null, null, null, null)));
         Mockito.when(accountRepository.save(Mockito.any())).thenAnswer(invocation->invocation.getArgument(0, Account.class));
         Mockito.when(tokensRepository.findById(token)).thenReturn(Optional.of(restorationTokenValid));
         Mockito.when(tokensRepository.findById(tokenExpired)).thenReturn(Optional.of(restorationTokenExpired));

@@ -21,7 +21,7 @@ public class AuthenticationService {
     }
 
     public AuthenticationToken authenticate(String email, String password, String issuer){
-        var account = accountRepository.findByEmailAndPassword(EncryptionUtils.createHash(email), EncryptionUtils.createHash(password))
+        var account = accountRepository.findByEmailAndPassword(email, EncryptionUtils.createHash(password))
                 .orElseThrow(NotAuthenticatedException::new);
         return tokenService.createToken(0, account.getId(), issuer);
     }
