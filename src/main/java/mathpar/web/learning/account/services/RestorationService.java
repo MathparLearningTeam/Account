@@ -26,7 +26,7 @@ public class RestorationService {
     }
 
     public void createPasswordRestorationRequest(String email){
-        var account = accountRepository.findByEmail(EncryptionUtils.createHash(email));
+        var account = accountRepository.findByEmail(email);
         if (account.isEmpty()) return;
         createPasswordRestorationRequest(account.get(), email);
     }

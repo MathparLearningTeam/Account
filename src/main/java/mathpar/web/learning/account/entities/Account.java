@@ -34,12 +34,12 @@ public class Account {
     @Temporal(TemporalType.DATE)
     private Date updateDate;
 
-    public Account(String rawEmail) {
-        this.email = EncryptionUtils.createHash(rawEmail);
+    public Account(String email) {
+        this.email = email;
     }
 
-    public Account(String rawEmail, String rawPassword, String fullName) {
-        this.email = EncryptionUtils.createHash(rawEmail);
+    public Account(String email, String rawPassword, String fullName) {
+        this.email = email;
         this.password = EncryptionUtils.createHash(rawPassword);
         this.fullName = fullName;
     }

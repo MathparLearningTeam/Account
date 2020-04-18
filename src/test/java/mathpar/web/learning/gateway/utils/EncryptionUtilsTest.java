@@ -23,9 +23,9 @@ class EncryptionUtilsTest {
 
     @Test
     void createHash() {
-        String randomEmail = "RandomEmail1", randomEmail2 = "RandomEmail2";
-        assert !EncryptionUtils.createHash(randomEmail).equals(EncryptionUtils.createHash(randomEmail2));
-        assert EncryptionUtils.createHash(randomEmail).equals(EncryptionUtils.createHash(randomEmail));
+        String randomString = "RandomString", randomString2 = "RandomString2";
+        assert !EncryptionUtils.createHash(randomString).equals(EncryptionUtils.createHash(randomString2));
+        assert EncryptionUtils.createHash(randomString).equals(EncryptionUtils.createHash(randomString));
     }
 
     @Test
