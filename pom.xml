@@ -139,6 +139,7 @@
 					<execution>
 						<phase>deploy</phase>
 						<goals>
+							<goal>removeImage</goal>
 							<goal>build</goal>
 							<goal>tag</goal>
 							<goal>push</goal>
