@@ -16,11 +16,9 @@ import java.util.logging.Logger;
 @Service
 public class TokenService {
     private final static Logger logger = Logger.getLogger("TokenService");
-    private final ChangePasswordTokenRepository changePasswordTokenRepository;
     private final AuthenticationTokenRepository authenticationTokenRepository;
 
     public TokenService(ChangePasswordTokenRepository changePasswordTokenRepository, AuthenticationTokenRepository authenticationTokenRepository) {
-        this.changePasswordTokenRepository = changePasswordTokenRepository;
         this.authenticationTokenRepository = authenticationTokenRepository;
     }
 
