@@ -33,7 +33,7 @@ public class RestorationService {
 
     public void createPasswordRestorationRequest(Account account, String email){
         var credentials = changePasswordTokenRepository.save(new ChangePasswordToken(account.getId(), DateUtils.getOffsetDate(new Date(), DateUtils.DAY)));
-        mailerService.sendSimpleMessage(email, "Mathpar reset password request", "The reset password request was created for your user in Mathpar system. Follow the link to proceed:\nhttp://mathpar.ukma.edu.ua/learning/resetPassword?t="+credentials.getToken()+"\n\nThis link will expire at "+credentials.getExpirationDate());
+        mailerService.sendSimpleMessage(email, "Mathpar reset password request", "The reset password request was created for your user in Mathpar system. Follow the link to proceed:\nhttp://mathpar.ukma.edu.ua/learning/#/restore/"+credentials.getToken()+"\n\nThis link will expire at "+credentials.getExpirationDate());
     }
 
     @Transactional
