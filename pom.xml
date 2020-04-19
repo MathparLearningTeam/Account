@@ -139,10 +139,10 @@
 					<execution>
 						<phase>deploy</phase>
 						<goals>
-							<goal>removeImage</goal>
 							<goal>build</goal>
 							<goal>tag</goal>
 							<goal>push</goal>
+							<goal>removeImage</goal>
 						</goals>
 						<configuration>
 							<dockerDirectory>docker</dockerDirectory>
