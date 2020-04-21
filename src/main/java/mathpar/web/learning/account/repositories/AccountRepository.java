@@ -24,6 +24,6 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     @Modifying
     void deleteAllByIdIn(List<Long> userId);
 
-    @Query(value="select email AS email, name AS name from accounts where id in ?1", nativeQuery=true)
+    @Query(value="select email, name, id from accounts where id in ?1", nativeQuery=true)
     List<AccountPublicInfo> getAccountPublicInfoForAccounts(List<Long> accountIds);
 }
