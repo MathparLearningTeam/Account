@@ -22,8 +22,8 @@ public class PrivateAccountController {
     }
 
     @PostMapping(CREATE_TEMPORARY_ACCOUNT_URL)
-    public void createTemporaryCredentials(@RequestBody CreateTemporaryCredentialsPayload payload){
-        accountService.createTemporaryAccount(payload.getEmail());
+    public Long createTemporaryCredentials(@RequestBody CreateTemporaryCredentialsPayload payload){
+        return accountService.createTemporaryAccount(payload.getEmail()).getId();
     }
 
     @DeleteMapping(REMOVE_ACCOUNTS)

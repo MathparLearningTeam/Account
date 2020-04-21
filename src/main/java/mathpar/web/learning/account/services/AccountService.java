@@ -35,9 +35,10 @@ public class AccountService {
         return accountRepository.save(new Account(email, password, fullName));
     }
 
-    public void createTemporaryAccount(String email){
+    public Account createTemporaryAccount(String email){
         var account = accountRepository.save(new Account(email));
         restorationService.createPasswordRestorationRequest(email);
+        return account;
     }
 
     @Transactional
