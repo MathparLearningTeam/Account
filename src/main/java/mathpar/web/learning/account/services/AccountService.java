@@ -2,6 +2,7 @@ package mathpar.web.learning.account.services;
 
 import mathpar.web.learning.account.entities.Account;
 import mathpar.web.learning.account.repositories.AccountRepository;
+import mathpar.web.learning.account.utils.dto.AccountPublicInfo;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -44,4 +45,7 @@ public class AccountService {
         accountRepository.deleteAllByIdIn(userIds);
     }
 
+    public List<AccountPublicInfo> getPublicInfo(List<Long> accountIds){
+        return accountRepository.getAccountPublicInfoForAccounts(accountIds);
+    }
 }

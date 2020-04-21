@@ -1,6 +1,7 @@
 package mathpar.web.learning.account.repositories;
 
 import mathpar.web.learning.account.entities.Account;
+import mathpar.web.learning.account.utils.dto.AccountPublicInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -22,4 +23,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 
     @Modifying
     void deleteAllByIdIn(List<Long> userId);
+
+    @Query(value="select email AS email, name AS name from accounts where id in ?1", nativeQuery=true)
+    List<AccountPublicInfo> getAccountPublicInfoForAccounts(List<Long> accountIds);
 }
