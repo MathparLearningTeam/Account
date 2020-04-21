@@ -5,6 +5,7 @@ import mathpar.web.learning.account.services.AccountService;
 import mathpar.web.learning.account.services.AuthenticationService;
 import mathpar.web.learning.account.utils.PublicApi;
 import mathpar.web.learning.account.utils.TokenUtils;
+import mathpar.web.learning.account.utils.dto.AccountPublicInfo;
 import mathpar.web.learning.account.utils.dto.payloads.CreateAccountPayload;
 import mathpar.web.learning.account.utils.dto.responses.AccountResponse;
 import mathpar.web.learning.account.utils.dto.responses.IsEmailAvailableResponse;
@@ -50,5 +51,11 @@ public class AccountController {
     @DeleteMapping(ACCOUNT_URL)
     public void deleteAccount(@RequestParam("accountId") long accountId){
         accountService.removeAccounts(List.of(accountId));
+    }
+
+    @GetMapping("/getPublicInfo")
+    public List<AccountPublicInfo> getPublicInfo(@RequestParam(value = "accountIds") List<Long> accountIds){
+        if(accountIds.isEmpty()) return List.of();
+        return accountService.getPublicInfo(accountIds);
     }
 }
