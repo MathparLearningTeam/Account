@@ -23,15 +23,15 @@ public class TokenValidationFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        var token = ((HttpServletRequest) request).getHeader(Constants.TOKEN_HEADER_NAME);
+        var tokenStr = ((HttpServletRequest) request).getHeader(Constants.TOKEN_HEADER_NAME);
         var context = SecurityContextHolder.getContext();
-        if (token == null){
+        if (tokenStr == null){
             context.setAuthentication(new AnonymousAuthenticationToken("anonymous", "anonymous", List.of(new SimpleGrantedAuthority("ROLE_ANONYMOUS"))));
         }
         else {
             try {
-                var tokenStr = tokenService.getToken(token);
-                context.setAuthentication(new UserAuthentication(tokenStr));
+                var token = tokenService.getToken(tokenStr);
+                context.setAuthentication(new UserAuthentication(token));
             } catch (InvalidTokenException e) {
                 sendError(response, 403, "Token is invalid: " + e.getMessage());
                 return;
