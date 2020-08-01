@@ -1,4 +1,4 @@
-package mathpar.web.learning.account._configs.security;//package mathpar.web.frontend.application._configs.security;
+package mathpar.web.learning.account._configs.security;
 
 import mathpar.web.learning.account.services.TokenService;
 import mathpar.web.learning.account.utils.Constants;
