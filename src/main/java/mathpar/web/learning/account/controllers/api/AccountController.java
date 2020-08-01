@@ -4,12 +4,13 @@ import io.swagger.annotations.Api;
 import mathpar.web.learning.account.services.AccountService;
 import mathpar.web.learning.account.services.AuthenticationService;
 import mathpar.web.learning.account.utils.PublicApi;
-import mathpar.web.learning.account.utils.TokenUtils;
+import mathpar.web.learning.account.utils.SecurityUtils;
 import mathpar.web.learning.account.utils.dto.AccountPublicInfo;
 import mathpar.web.learning.account.utils.dto.payloads.CreateAccountPayload;
 import mathpar.web.learning.account.utils.dto.responses.AccountResponse;
 import mathpar.web.learning.account.utils.dto.responses.IsEmailAvailableResponse;
 import mathpar.web.learning.account.utils.dto.responses.RegistrationResponse;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,10 +35,10 @@ public class AccountController {
         return new IsEmailAvailableResponse(accountService.isEmailAvailable(email));
     }
 
-    //TODO change to spring security usage
     @GetMapping(ACCOUNT_URL)
-    public AccountResponse getAccount(@RequestHeader(value = "AUTH-TOKEN") String token){
-        long id = TokenUtils.mapTokenToId(token);
+    @PreAuthorize("hasRole('ROLE_ACCOUNT')")
+    public AccountResponse getAccount(){
+        long id = SecurityUtils.getCurrentAuthentication().getPrincipal();
         return new AccountResponse(accountService.getAccount(id).orElseThrow());
     }
 
