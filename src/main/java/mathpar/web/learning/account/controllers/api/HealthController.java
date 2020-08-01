@@ -1,11 +1,13 @@
-package mathpar.web.learning.account.controllers;
+package mathpar.web.learning.account.controllers.api;
 
 import lombok.Data;
+import mathpar.web.learning.account.utils.PublicApi;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@PublicApi
 @RestController
 public class HealthController {
     private final JdbcTemplate jdbcTemplate;
