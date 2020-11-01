@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>mathpar.web.learning</groupId>
 	<artifactId>account</artifactId>
-	<version>0.14.0</version>
+	<version>0.15.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>Account</name>
 	<description>This module is responsible for account management and serves as CAM.</description>
@@ -23,7 +23,7 @@
 	<scm>
 		<url>https://github.com/MathparLearningTeam/Account</url>
 		<developerConnection>svm:git:https://github.com/MathparLearningTeam/Account</developerConnection>
-	  <tag>0.14.0</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 
